@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>chai aur code</h1>
+    <button id = "stop">stop</button>
+    <script> //handler basically ek call back ya function jiska naam nahi hai
+        // setTimeout(function(){
+        //     console.log("Vidhi");
+        // }, 2000)
+        //abbbbbbbbbb iss function ka apan reference bhi de skate hain
+        const sayVidhi = function(){
+            console.log("Vidhi");
+            // setTimeout(sayVidhi, 2000)  yeh liye hain reference
+        }
+        const changeText = function(){
+            document.querySelector('h1').innerHTML = "yeah Vidhi"
+        }
+        //setTimeout(changeText, 2000)
+        const changeMe = setTimeout(changeText, 2000)
+
+        //dekho ab dekhenge clearTimeout, ise reference chahiye hota hai ki kaunse waale setTimeout ko hum hatana chahte hain
+        //clearTimeout(changeMe)
+        document.querySelector('#stop').addEventListener('click', function(){
+            clearTimeout(changeMe)
+            console.log("stopped")  //basically button dabane par yeh change nahi hoega
+        })
+    </script>
+</body>
+</html>
